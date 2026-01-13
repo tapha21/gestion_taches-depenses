@@ -18,13 +18,7 @@ public class CorsConfig {
                                 "http://localhost:4200",
                                 "https://samagestionweb.vercel.app"
                         )
-                        .allowedMethods(
-                                "GET",
-                                "POST",
-                                "PUT",
-                                "DELETE",
-                                "OPTIONS"
-                        )
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true)
                         .maxAge(3600);
