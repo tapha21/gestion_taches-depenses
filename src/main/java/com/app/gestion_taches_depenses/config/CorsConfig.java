@@ -1,4 +1,4 @@
-package com.example.config;
+package com.app.gestion_taches_depenses.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,14 +13,21 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**") // toutes les routes
+                registry.addMapping("/**")
                         .allowedOrigins(
-                            "http://localhost:4200",        // Angular local
-                            "https://samagestionweb.vercel.app"  // déployé
+                                "http://localhost:4200",
+                                "https://samagestionweb.vercel.app"
                         )
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedMethods(
+                                "GET",
+                                "POST",
+                                "PUT",
+                                "DELETE",
+                                "OPTIONS"
+                        )
                         .allowedHeaders("*")
-                        .allowCredentials(true); // si tu utilises des cookies/session
+                        .allowCredentials(true)
+                        .maxAge(3600);
             }
         };
     }
