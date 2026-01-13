@@ -49,7 +49,8 @@ public class TacheService {
 
     // Lister par état
     public List<TacheResponseDto> listerTachesParEtat(String etat) {
-        return repository.findByEtat(EtatTache.valueOf(etat)).stream()
+        EtatTache etatEnum = EtatTache.valueOf(etat); // ici c'est ok car String -> Enum
+        return repository.findByEtat(etatEnum).stream()
                 .map(mapper::toDTO)
                 .collect(Collectors.toList());
     }
@@ -60,9 +61,11 @@ public class TacheService {
                 .orElseThrow(() -> new RuntimeException("Tâche non trouvée"));
         tache.setTitre(request.getTitre());
         tache.setDescription(request.getDescription());
+
         if(request.getEtat() != null) {
-            tache.setEtat(EtatTache.valueOf(request.getEtat()));
+            tache.setEtat(request.getEtat()); // plus besoin de valueOf
         }
+
         repository.save(tache);
         return mapper.toDTO(tache);
     }

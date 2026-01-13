@@ -3,11 +3,7 @@ package com.app.gestion_taches_depenses.mappers;
 import org.springframework.stereotype.Component;
 import com.app.gestion_taches_depenses.dtos.request.CreateDepenseRequestDto;
 import com.app.gestion_taches_depenses.dtos.response.DepenseResponseDto;
-
-
 import com.app.gestion_taches_depenses.models.entites.Depense;
-import com.app.gestion_taches_depenses.models.enums.CategorieDepense;
-import com.app.gestion_taches_depenses.models.enums.EtatDepense;
 
 @Component
 public class DepenseMapper {
@@ -27,9 +23,8 @@ public class DepenseMapper {
         Depense depense = new Depense();
         depense.setTitre(request.getTitre());
         depense.setMontant(request.getMontant());
+        depense.setCategorieDepense(request.getCategorie());
         depense.setUtilisateurId(utilisateurId);
-        depense.setCategorieDepense(CategorieDepense.valueOf(request.getCategorie()));
-        depense.setEtat(EtatDepense.PREVUE);
         return depense;
     }
 }

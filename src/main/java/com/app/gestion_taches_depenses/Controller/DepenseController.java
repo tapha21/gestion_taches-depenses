@@ -1,61 +1,61 @@
 package com.app.gestion_taches_depenses.Controller;
 
-import com.app.gestion_taches_depenses.services.TacheService;
-import com.app.gestion_taches_depenses.dtos.request.CreationTachesRequestDto;
-import com.app.gestion_taches_depenses.dtos.response.TacheResponseDto;
+import com.app.gestion_taches_depenses.services.DepenseService;
+import com.app.gestion_taches_depenses.dtos.request.CreateDepenseRequestDto;
+import com.app.gestion_taches_depenses.dtos.response.DepenseResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/taches")
+@RequestMapping("/api/depenses")
 @RequiredArgsConstructor
-public class TacheController {
+public class DepenseController {
 
-    private final TacheService service;
+    private final DepenseService service;
 
-    // Créer une tache
+    // Créer une dépense
     @PostMapping
-    public TacheResponseDto creerTache(@RequestBody CreationTachesRequestDto request, 
-                                       @RequestParam String utilisateurId) {
+    public DepenseResponseDto creerDepense(@RequestBody CreateDepenseRequestDto request, 
+                                           @RequestParam String utilisateurId) {
         return service.creer(request, utilisateurId);
     }
 
-    // Lister toutes les tâches
+    // Lister toutes les dépenses
     @GetMapping
-    public List<TacheResponseDto> listerTaches() {
-        return service.listerTaches();
+    public List<DepenseResponseDto> listerDepenses() {
+        return service.listerDepenses();
     }
 
-    // Lister une tâche par id
+    // Lister une dépense par id
     @GetMapping("/{id}")
-    public TacheResponseDto getTache(@PathVariable String id) {
+    public DepenseResponseDto getDepense(@PathVariable String id) {
         return service.getById(id);
     }
 
     // Lister par utilisateur
     @GetMapping("/utilisateur/{id}")
-    public List<TacheResponseDto> listerTachesParUtilisateur(@PathVariable String id) {
-        return service.listerTachesParUtilisateur(id);
+    public List<DepenseResponseDto> listerDepensesParUtilisateur(@PathVariable String id) {
+        return service.listerDepensesParUtilisateur(id);
     }
 
     // Lister par état
     @GetMapping("/etat/{etat}")
-    public List<TacheResponseDto> listerTachesParEtat(@PathVariable String etat) {
-        return service.listerTachesParEtat(etat);
+    public List<DepenseResponseDto> listerDepensesParEtat(@PathVariable String etat) {
+        return service.listerDepensesParEtat(etat);
     }
 
-    // Modifier une tache
+    // Modifier une dépense
     @PutMapping("/{id}")
-    public TacheResponseDto updateTache(@PathVariable String id, 
-                                        @RequestBody CreationTachesRequestDto request) {
+    public DepenseResponseDto updateDepense(@PathVariable String id, 
+                                            @RequestBody CreateDepenseRequestDto request) {
         return service.update(id, request);
     }
 
-    // Supprimer une tache
+    // Supprimer une dépense
     @DeleteMapping("/{id}")
-    public void deleteTache(@PathVariable String id) {
+    public void deleteDepense(@PathVariable String id) {
         service.delete(id);
     }
 }
