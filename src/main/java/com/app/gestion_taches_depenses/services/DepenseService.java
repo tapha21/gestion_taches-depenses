@@ -8,6 +8,8 @@ import com.app.gestion_taches_depenses.models.enums.EtatDepense;
 import com.app.gestion_taches_depenses.repository.DepenseRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.app.gestion_taches_depenses.models.enums.CategorieDepense;
+import com.app.gestion_taches_depenses.models.enums.EtatDepense;
 
 import java.util.Collections;
 import java.util.List;

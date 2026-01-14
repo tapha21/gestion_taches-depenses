@@ -5,6 +5,8 @@ import com.app.gestion_taches_depenses.dtos.request.CreateDepenseRequestDto;
 import com.app.gestion_taches_depenses.dtos.response.DepenseResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import com.app.gestion_taches_depenses.models.enums.CategorieDepense;
+import com.app.gestion_taches_depenses.models.enums.EtatDepense;
 
 import java.util.List;
 

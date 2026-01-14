@@ -1,3 +1,4 @@
+com\app\gestion_taches_depenses\config\CorsConfig.class
 com\app\gestion_taches_depenses\repository\DepenseRepository.class
 com\app\gestion_taches_depenses\dtos\response\DepenseResponseDto.class
 com\app\gestion_taches_depenses\Controller\UtilisateurController.class
@@ -10,13 +11,13 @@ com\app\gestion_taches_depenses\models\enums\CategorieDepense.class
 com\app\gestion_taches_depenses\models\entites\Utilisateur.class
 com\app\gestion_taches_depenses\mappers\DepenseMapper.class
 com\app\gestion_taches_depenses\models\enums\EtatTache.class
-com\example\config\CorsConfig.class
 com\app\gestion_taches_depenses\dtos\request\CreationTachesRequestDto.class
 com\app\gestion_taches_depenses\dtos\response\UtilisateurResponseDto.class
 com\app\gestion_taches_depenses\dtos\request\ConnexionRequestDto.class
 com\app\gestion_taches_depenses\Controller\DashboardController.class
 com\app\gestion_taches_depenses\dtos\response\TacheResponseDto.class
 com\app\gestion_taches_depenses\Controller\DepenseController.class
+com\app\gestion_taches_depenses\config\CorsConfig$1.class
 com\app\gestion_taches_depenses\mappers\TacheMapper.class
 com\app\gestion_taches_depenses\dtos\request\CreateDepenseRequestDto.class
 com\app\gestion_taches_depenses\models\enums\EtatDepense.class
@@ -26,4 +27,3 @@ com\app\gestion_taches_depenses\dtos\request\InscriptionRequestDto.class
 com\app\gestion_taches_depenses\services\UtilisateurService.class
 com\app\gestion_taches_depenses\GestionTachesDepensesApplication.class
 com\app\gestion_taches_depenses\repository\TacheRepository.class
-com\example\config\CorsConfig$1.class
