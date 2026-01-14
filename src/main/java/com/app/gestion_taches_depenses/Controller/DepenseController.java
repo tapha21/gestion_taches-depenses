@@ -41,10 +41,11 @@ public class DepenseController {
     }
 
     // Lister par état
-    @GetMapping("/etat/{etat}")
-    public List<DepenseResponseDto> listerDepensesParEtat(@PathVariable String etat) {
-        return service.listerDepensesParEtat(etat);
-    }
+  @GetMapping("/etat/{etat}")
+public List<DepenseResponseDto> listerDepensesParEtat(@PathVariable EtatDepense etat) {
+    return service.listerDepensesParEtat(etat);
+}
+
 
     // Modifier une dépense
     @PutMapping("/{id}")
@@ -58,4 +59,14 @@ public class DepenseController {
     public void deleteDepense(@PathVariable String id) {
         service.delete(id);
     }
+
+    @GetMapping("/filtres")
+public List<DepenseResponseDto> listerDepensesFiltres(
+        @RequestParam(required = false) String utilisateurId,
+        @RequestParam(required = false) EtatDepense etat,
+        @RequestParam(required = false) CategorieDepense categorie
+) {
+    return service.listerDepensesAvecFiltres(utilisateurId, etat, categorie);
+}
+
 }

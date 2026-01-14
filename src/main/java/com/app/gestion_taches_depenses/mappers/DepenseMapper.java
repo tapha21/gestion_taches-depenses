@@ -8,22 +8,35 @@ import com.app.gestion_taches_depenses.models.entites.Depense;
 @Component
 public class DepenseMapper {
 
+    // Conversion Entity → DTO
     public DepenseResponseDto toDTO(Depense depense) {
         DepenseResponseDto dto = new DepenseResponseDto();
         dto.setId(depense.getId());
         dto.setTitre(depense.getTitre());
         dto.setMontant(depense.getMontant());
-        dto.setEtat(depense.getEtat().name());
-        dto.setCategorie(depense.getCategorieDepense().name());
+
+        // sécuriser l'état
+        dto.setEtat(depense.getEtat() != null ? depense.getEtat().name() : "INDEFINI");
+
+        // sécuriser la catégorie
+        dto.setCategorie(
+            depense.getCategorieDepense() != null
+                ? depense.getCategorieDepense().name()
+                : "AUTRES"
+        );
+
         dto.setDateCreation(depense.getDateCreation());
         return dto;
     }
 
+    // Conversion Request DTO → Entity
     public Depense toEntity(CreateDepenseRequestDto request, String utilisateurId) {
         Depense depense = new Depense();
         depense.setTitre(request.getTitre());
         depense.setMontant(request.getMontant());
-        depense.setCategorieDepense(request.getCategorie());
+
+        // Vérification de la catégorie avant assignation
+        depense.setCategorieDepense(request.getCategorie() != null ? request.getCategorie() : com.app.gestion_taches_depenses.models.enums.CategorieDepense.AUTRES);
         depense.setUtilisateurId(utilisateurId);
         return depense;
     }
