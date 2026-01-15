@@ -12,6 +12,7 @@ public class UtilisateurMapper {
         dto.setId(utilisateur.getId());
         dto.setNom(utilisateur.getNom());
         dto.setEmail(utilisateur.getEmail());
+        dto.setSolde(utilisateur.getSolde());
         return dto;
     }
 }

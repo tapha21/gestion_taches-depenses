@@ -29,4 +29,16 @@ public class UtilisateurController {
     public List<UtilisateurResponseDto> lister() {
         return service.lister();
     }
+    @GetMapping("/{id}/solde")
+public double getSolde(@PathVariable String id) {
+    return service.getSolde(id);
+}
+
+@PostMapping("/{id}/ajouter-solde/{montant}")
+public UtilisateurResponseDto ajouterSolde(
+        @PathVariable String id,
+        @PathVariable double montant) {
+    return service.ajouterSolde(id, montant);
+}
+
 }

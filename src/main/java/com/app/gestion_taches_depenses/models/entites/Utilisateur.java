@@ -5,13 +5,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "utilisateurs")
 public class Utilisateur {
+
     @Id
     private String id;
     private String nom;
     private String email;
     private String motDePasse;
 
-    // Getters et Setters
+    private double solde = 0; // ✅ SOLDE PAR DÉFAUT
+
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
@@ -23,4 +25,7 @@ public class Utilisateur {
 
     public String getMotDePasse() { return motDePasse; }
     public void setMotDePasse(String motDePasse) { this.motDePasse = motDePasse; }
+
+    public double getSolde() { return solde; }
+    public void setSolde(double solde) { this.solde = solde; }
 }

@@ -52,4 +52,25 @@ public UtilisateurResponseDto connexion(ConnexionRequestDto dto) {
                 .map(utilisateurMapper::toResponseDto)
                 .collect(Collectors.toList());
     }
+
+    public double getSolde(String userId) {
+    Utilisateur u = utilisateurRepository.findById(userId)
+            .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+    return u.getSolde();
+}
+
+public UtilisateurResponseDto ajouterSolde(String userId, double montant) {
+    if (montant <= 0) {
+        throw new RuntimeException("Montant invalide");
+    }
+
+    Utilisateur u = utilisateurRepository.findById(userId)
+            .orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+
+    u.setSolde(u.getSolde() + montant);
+    utilisateurRepository.save(u);
+
+    return utilisateurMapper.toResponseDto(u);
+}
+
 }
