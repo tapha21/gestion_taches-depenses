@@ -20,8 +20,11 @@ WORKDIR /app
 # Copier le jar depuis l'étape de build
 COPY --from=build /app/target/gestion-taches-depenses-0.0.1-SNAPSHOT.jar app.jar
 
-# Exposer le port sur lequel Spring Boot écoute
-EXPOSE 8080
+# Définir le port dynamique fourni par Fly.io
+ENV PORT 8080
 
-# Commande pour lancer l'application
-ENTRYPOINT ["java","-jar","app.jar"]
+# Exposer le port (facultatif, mais conseillé)
+EXPOSE $PORT
+
+# Commande pour lancer l'application en utilisant le port dynamique
+ENTRYPOINT ["sh", "-c", "java -jar app.jar --server.port=$PORT"]
