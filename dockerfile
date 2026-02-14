@@ -1,30 +1,48 @@
-# Étape 1 : Build de l'application
-FROM maven:3.9.4-eclipse-temurin-20 AS build
+# Stage 1: Build the application
+FROM maven:3.9-eclipse-temurin-17 AS build
 
-# Définir le répertoire de travail
+# Set the working directory
 WORKDIR /app
 
-# Copier les fichiers Maven
+# Copy the pom.xml file first to leverage Docker cache
 COPY pom.xml .
+
+# Download dependencies - this layer will be cached unless pom.xml changes
+RUN mvn dependency:go-offline -B
+
+# Copy the source code
 COPY src ./src
 
-# Compiler le projet et créer le jar
+# Build the application
 RUN mvn clean package -DskipTests
 
-# Étape 2 : Exécution de l'application
-FROM eclipse-temurin:20-jre-alpine
+# Stage 2: Create the runtime image
+FROM eclipse-temurin:17-jre-alpine
 
-# Définir le répertoire de travail
+# Install dumb-init for proper signal handling
+RUN apk add --no-cache dumb-init
+
+# Create a non-root user to run the application
+RUN addgroup -g 1000 spring && adduser -u 1000 -G spring -s /bin/sh -D spring
+
+# Set the working directory
 WORKDIR /app
 
-# Copier le jar depuis l'étape de build
-COPY --from=build /app/target/gestion-taches-depenses-0.0.1-SNAPSHOT.jar app.jar
+# Copy the JAR file from the build stage
+COPY --from=build /app/target/*.jar app.jar
 
-# Définir le port dynamique fourni par Fly.io
-ENV PORT 8080
+# Change ownership of the application files
+RUN chown -R spring:spring /app
 
-# Exposer le port (facultatif, mais conseillé)
+# Switch to the non-root user
+USER spring:spring
+
+# Expose the port Spring Boot runs on
+ENV PORT=8080
 EXPOSE $PORT
 
-# Commande pour lancer l'application en utilisant le port dynamique
-ENTRYPOINT ["sh", "-c", "java -jar app.jar --server.port=$PORT"]
+# Use dumb-init to run the application
+ENTRYPOINT ["dumb-init", "--"]
+
+# Run the Spring Boot application
+CMD ["java", "-Xmx512m", "-Dserver.port=${PORT}", "-jar", "app.jar"]
