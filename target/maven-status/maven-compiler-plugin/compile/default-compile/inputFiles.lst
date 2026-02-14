@@ -23,6 +23,7 @@ C:\Users\HUAWEI\OneDrive\Documents\Bureau\X.03Bd\L3f70\MyApp\Backend\gestion-tac
 C:\Users\HUAWEI\OneDrive\Documents\Bureau\X.03Bd\L3f70\MyApp\Backend\gestion-taches-depenses\gestion-taches-depenses\src\main\java\com\app\gestion_taches_depenses\dtos\request\CreationTachesRequestDto.java
 C:\Users\HUAWEI\OneDrive\Documents\Bureau\X.03Bd\L3f70\MyApp\Backend\gestion-taches-depenses\gestion-taches-depenses\src\main\java\com\app\gestion_taches_depenses\mappers\UtilisateurMapper.java
 C:\Users\HUAWEI\OneDrive\Documents\Bureau\X.03Bd\L3f70\MyApp\Backend\gestion-taches-depenses\gestion-taches-depenses\src\main\java\com\app\gestion_taches_depenses\dtos\response\DepenseResponseDto.java
+C:\Users\HUAWEI\OneDrive\Documents\Bureau\X.03Bd\L3f70\MyApp\Backend\gestion-taches-depenses\gestion-taches-depenses\src\main\java\com\app\gestion_taches_depenses\config\CorsConfig.java
 C:\Users\HUAWEI\OneDrive\Documents\Bureau\X.03Bd\L3f70\MyApp\Backend\gestion-taches-depenses\gestion-taches-depenses\src\main\java\com\app\gestion_taches_depenses\dtos\response\UtilisateurResponseDto.java
 C:\Users\HUAWEI\OneDrive\Documents\Bureau\X.03Bd\L3f70\MyApp\Backend\gestion-taches-depenses\gestion-taches-depenses\src\main\java\com\app\gestion_taches_depenses\dtos\request\CreateDepenseRequestDto.java
 C:\Users\HUAWEI\OneDrive\Documents\Bureau\X.03Bd\L3f70\MyApp\Backend\gestion-taches-depenses\gestion-taches-depenses\src\main\java\com\app\gestion_taches_depenses\models\enums\CategorieDepense.java

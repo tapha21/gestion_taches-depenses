@@ -22,4 +22,4 @@ ENV PORT=8080
 ENV JAVA_OPTS="-Xms128m -Xmx512m -XX:+UseContainerSupport"
 
 # Lancement avec port dynamique
-ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar --server.port=$PORT"]
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -jar app.jar --server.port=$PORT --server.address=0.0.0.0"]

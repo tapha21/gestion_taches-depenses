@@ -12,7 +12,6 @@ com\app\gestion_taches_depenses\models\entites\Utilisateur.class
 com\app\gestion_taches_depenses\mappers\DepenseMapper.class
 com\app\gestion_taches_depenses\models\enums\EtatTache.class
 com\app\gestion_taches_depenses\dtos\request\CreationTachesRequestDto.class
-com\app\gestion_taches_depenses\models\fixtures\DataFixtures.class
 com\app\gestion_taches_depenses\dtos\response\UtilisateurResponseDto.class
 com\app\gestion_taches_depenses\dtos\request\ConnexionRequestDto.class
 com\app\gestion_taches_depenses\Controller\DashboardController.class
